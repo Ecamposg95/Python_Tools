@@ -1,28 +1,29 @@
 # Python_Tools
 
-## Repositorio de Herramientas para Business Analytics
+## Repositorio de Herramientas para Business Analytics en Python
 
-Este repositorio ha sido creado como parte del trabajo de análisis de datos enfocado en business analytics. Está dirigido a desarrollar y demostrar herramientas y scripts en Python que facilitan el análisis y la toma de decisiones en el entorno empresarial.
+Este repositorio está dedicado exclusivamente al desarrollo y la demostración de herramientas y scripts en Python, enfocados en facilitar el análisis y la toma de decisiones en el ámbito de business analytics. Las herramientas están desarrolladas utilizando el entorno Anaconda y el IDE Spyder, proporcionando un marco robusto para la programación científica.
 
 ### Propósito del Repositorio
 
-El propósito de este repositorio es servir como un hub para el desarrollo y la compartición de herramientas útiles en el ámbito de los análisis de negocios. Estas herramientas están diseñadas para mejorar la eficiencia y efectividad en la interpretación de datos empresariales y en la toma de decisiones basada en datos.
+El objetivo de este repositorio es proporcionar herramientas eficientes y efectivas para el análisis de negocios, ayudando a mejorar la interpretación de datos y la toma de decisiones basada en evidencia en diversos contextos empresariales.
 
 ### Autor
 
 **Emmanuel Campos Genaro**
 - Investigador Parlamentario
-
+- Afiliado a Smart Site Company
+- Contacto: ecamposg95@gmail.com
 
 ### Estructura del Repositorio
 
-El repositorio está organizado de la siguiente manera:
+El repositorio se organiza siguiendo una estructura clara y funcional, diseñada para mantener el código accesible y bien organizado:
 
-- `scripts/`: Directorio principal que contiene scripts en Python para generar y analizar datos.
-- `output/`: Carpeta donde se almacenan los resultados de los scripts ejecutados, incluyendo archivos de salida como gráficos y resúmenes estadísticos.
-- `data/`: Directorio para almacenar conjuntos de datos utilizados en los análisis.
-- `docs/`: Carpeta que contiene documentación relacionada con los proyectos y herramientas disponibles en el repositorio.
+- `scripts/`: Contiene los scripts de Python. Aquí es donde reside el desarrollo principal del código.
+- `input/`: Carpeta para archivos de entrada que los scripts podrían necesitar procesar.
+- `output/`: Almacena los resultados generados por los scripts, como archivos de datos, gráficos y otros archivos de salida.
+- `docs/`: Documentación técnica y explicativa de los proyectos y herramientas desarrolladas.
 
 ### Contribuir
 
-Si tienes sugerencias para mejorar las herramientas o los análisis presentados en este repositorio, no dudes en crear un `issue` o un `pull request`. Tu colaboración es bienvenida y apreciada en este esfuerzo por mejorar la analítica de negocios.
+Te invitamos a contribuir a este repositorio si tienes ideas o mejoras para las herramientas existentes. Si deseas aportar, puedes iniciar un `issue` o un `pull request`. Cualquier contribución que ayude a mejorar la funcionalidad y utilidad de las herramientas es bienvenida.
