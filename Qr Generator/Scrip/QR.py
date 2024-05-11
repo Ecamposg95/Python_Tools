@@ -12,7 +12,7 @@ from qrcode.image.svg import SvgImage
 output_dir = os.path.join(os.path.dirname(__file__), '..', 'Output')
 
 # Datos que deseas incluir en el código QR
-data = "https://forms.gle/rYk5FvjKBan2wd6r7"
+data = "https://github.com/Ecamposg95"
 
 # Generar el código QR
 qr = qrcode.QRCode(
@@ -28,7 +28,7 @@ qr.make(fit=True)
 img = qr.make_image(fill_color="black", back_color="white", image_factory=SvgImage)
 
 # Ruta del archivo donde se guardará el código QR en formato SVG
-file_path = os.path.join(output_dir, 'Formulario_Curso_Fortalecimiento.svg')
+file_path = os.path.join(output_dir, 'GIT.svg')
 
 # Guardar la imagen en formato SVG
 img.save(file_path)
