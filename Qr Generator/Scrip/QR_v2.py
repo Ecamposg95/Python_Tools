@@ -16,7 +16,7 @@ if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 
 # Datos que deseas incluir en el código QR
-data = "https://elearningcentrosestudios.diputados.gob.mx/login/index.php"
+data = "https://forms.gle/85eB1RXZngCui3Zu5"
 
 # Generar el código QR
 qr = qrcode.QRCode(
@@ -32,7 +32,7 @@ qr.make(fit=True)
 img = qr.make_image(image_factory=SvgImage)
 
 # Ruta del archivo donde se guardará el código QR en formato SVG
-file_path = os.path.join(output_dir, 'cursomain.svg')
+file_path = os.path.join(output_dir, 'cursocfp.svg')
 
 # Guardar la imagen en formato SVG
 with open(file_path, 'w', encoding='utf-8') as f:
