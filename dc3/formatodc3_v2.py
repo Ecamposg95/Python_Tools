@@ -1,6 +1,6 @@
 import pandas as pd
 from openpyxl import load_workbook
-from openpyxl.styles import Alignment
+from openpyxl.styles import Alignment, Font
 import os
 import logging
 
@@ -32,19 +32,18 @@ except Exception as e:
 # Función para extraer cada dígito de una fecha en una lista
 def descomponer_fecha(fecha):
     fecha_str = fecha.strftime("%Y%m%d")  # Convertir a string en formato YYYYMMDD
-    return [int(digito) for digito in fecha_str]  # Retornar los dígitos separados en una lista
+    return [int(digito) for digito in fecha_str]
 
 # Iterar sobre cada inscrito
 for index, row in df.iterrows():
     try:
-        # Validar que los campos requeridos no estén vacíos
-        required_fields = ["Nombre", "CURP", "RFC_SHCP", "Ocupacion", "Duración del curso", "F_inicial", "F_final", 
+        # Validar campos requeridos
+        required_fields = ["Nombre", "CURP", "RFC_SHCP", "Ocupacion", "Duración del curso", "F_inicial", "F_final",
                            "Puesto", "Empresa", "N_Curso", "Tematica", "Capacitador", "Instructor", "patron", "Representante"]
         for field in required_fields:
             if pd.isna(row[field]):
                 raise ValueError(f"El campo {field} está vacío en el registro {index + 1}")
 
-        # Cargar la plantilla del Formato DC-3
         wb = load_workbook(ruta_formato)
         ws = wb.active
 
@@ -56,27 +55,68 @@ for index, row in df.iterrows():
                 ws.unmerge_cells(merged_range.coord)
             if "E38" in merged_range.coord:
                 ws.unmerge_cells(merged_range.coord)
-            if "Z17" in merged_range.coord:  # Ocupación
+            if "E41" in merged_range.coord:
+                ws.unmerge_cells(merged_range.coord)
+            if "Z17" in merged_range.coord:
                 ws.unmerge_cells(merged_range.coord)
 
-        # 🔹 Escribir la CURP carácter por carácter en la fila 17
+        font_normal = Font(bold=False)
+
+        # 🔹 CURP carácter por carácter
         for i, char in enumerate(row["CURP"]):
-            ws.cell(row=17, column=5 + i, value=char)  # E17 en adelante
+            cell = ws.cell(row=17, column=5 + i, value=char)
+            cell.font = font_normal
+            cell.alignment = Alignment(horizontal="center", vertical="center")
 
-        # 🔹 Escribir el RFC carácter por carácter en la fila 29
+        # 🔹 RFC carácter por carácter
         for i, char in enumerate(row["RFC_SHCP"]):
-            ws.cell(row=29, column=5 + i, value=char)  # E29 en adelante
+            cell = ws.cell(row=29, column=5 + i, value=char)
+            cell.font = font_normal
+            cell.alignment = Alignment(horizontal="center", vertical="center")
 
-        # 🔹 Escribir la Ocupación en Z17 con alineación a la izquierda
+        # 🔹 Ocupación en Z17 (una sola celda, alineado a la izquierda)
         ws["Z17"] = row["Ocupacion"]
-        ws["Z17"].alignment = Alignment(horizontal="left", vertical="center")  # Alineado a la izquierda
+        ws["Z17"].alignment = Alignment(horizontal="left", vertical="center")
+        ws["Z17"].font = font_normal
 
-        # 🔹 Fusionar celdas para "Duración en Horas" (de E38 a G38)
+        # 🔹 Nombre del trabajador (E14)
+        ws["E14"] = row["Nombre"]
+        ws["E14"].alignment = Alignment(horizontal="left", vertical="center")
+        ws["E14"].font = font_normal
+
+        # 🔹 Puesto (E20)
+        ws["E20"] = row["Puesto"]
+        ws["E20"].alignment = Alignment(horizontal="left", vertical="center")
+        ws["E20"].font = font_normal
+
+        # 🔹 Empresa (E26)
+        ws["E26"] = row["Empresa"]
+        ws["E26"].alignment = Alignment(horizontal="left", vertical="center")
+        ws["E26"].font = font_normal
+
+        # 🔹 Nombre del curso (E35)
+        ws["E35"] = row["N_Curso"]
+        ws["E35"].alignment = Alignment(horizontal="left", vertical="center")
+        ws["E35"].font = font_normal
+
+        # 🔹 Duración del curso (fusionar E38:G38)
         ws.merge_cells("E38:G38")
         ws["E38"] = row["Duración del curso"]
-        ws["E38"].alignment = Alignment(horizontal="center", vertical="center")  # Alineado al centro
+        ws["E38"].alignment = Alignment(horizontal="center", vertical="center")
+        ws["E38"].font = font_normal
 
-        # 🔹 Escribir Año, Mes y Día (Inicio y Fin)
+        # 🔹 Área Temática (fusionar E41:H41)
+        ws.merge_cells("E41:H41")
+        ws["E41"] = row["Tematica"]
+        ws["E41"].alignment = Alignment(horizontal="center", vertical="center")
+        ws["E41"].font = font_normal
+
+        # 🔹 Capacitador (E44)
+        ws["E44"] = row["Capacitador"]
+        ws["E44"].alignment = Alignment(horizontal="left", vertical="center")
+        ws["E44"].font = font_normal
+
+        # 🔹 Fechas descompuestas
         digitos_inicio = descomponer_fecha(row["F_inicial"])
         digitos_fin = descomponer_fecha(row["F_final"])
 
@@ -86,31 +126,32 @@ for index, row in df.iterrows():
         }
 
         for i, col in enumerate(posiciones["año_inicio"]):
-            ws.cell(row=38, column=col, value=digitos_inicio[i])
+            ws.cell(row=38, column=col, value=digitos_inicio[i]).font = font_normal
         for i, col in enumerate(posiciones["mes_inicio"]):
-            ws.cell(row=38, column=col, value=digitos_inicio[4 + i])
+            ws.cell(row=38, column=col, value=digitos_inicio[4 + i]).font = font_normal
         for i, col in enumerate(posiciones["día_inicio"]):
-            ws.cell(row=38, column=col, value=digitos_inicio[6 + i])
+            ws.cell(row=38, column=col, value=digitos_inicio[6 + i]).font = font_normal
         for i, col in enumerate(posiciones["año_fin"]):
-            ws.cell(row=38, column=col, value=digitos_fin[i])
+            ws.cell(row=38, column=col, value=digitos_fin[i]).font = font_normal
         for i, col in enumerate(posiciones["mes_fin"]):
-            ws.cell(row=38, column=col, value=digitos_fin[4 + i])
+            ws.cell(row=38, column=col, value=digitos_fin[4 + i]).font = font_normal
         for i, col in enumerate(posiciones["día_fin"]):
-            ws.cell(row=38, column=col, value=digitos_fin[6 + i])
+            ws.cell(row=38, column=col, value=digitos_fin[6 + i]).font = font_normal
 
-        # 🔹 Escribir otros campos en el formato DC-3
-        ws.cell(row=14, column=5, value=row["Nombre"])  # E14 -> Nombre
-        ws.cell(row=20, column=5, value=row["Puesto"])  # E20 -> Puesto
-        ws.cell(row=26, column=5, value=row["Empresa"])  # E26 -> Empresa
-        ws.cell(row=35, column=5, value=row["N_Curso"])  # E35 -> Nombre del Curso
+        # 🔹 Firmas
+        ws["H53"] = row["Instructor"]
+        ws["H53"].alignment = Alignment(horizontal="left")
+        ws["H53"].font = font_normal
 
-        ws.cell(row=41, column=5, value=row["Tematica"])  # E41 -> Área Temática
-        ws.cell(row=44, column=5, value=row["Capacitador"])  # E44 -> Agente Capacitador
-        ws.cell(row=53, column=8, value=row["Instructor"])  # H53 -> Instructor
-        ws.cell(row=53, column=21, value=row["patron"])  # U53 -> Patrón o Representante Legal
-        ws.cell(row=53, column=34, value=row["Representante"])  # AH53 -> Representante de Trabajadores
+        ws["U53"] = row["patron"]
+        ws["U53"].alignment = Alignment(horizontal="left")
+        ws["U53"].font = font_normal
 
-        # Guardar con un nuevo nombre basado en el nombre del inscrito
+        ws["AH53"] = row["Representante"]
+        ws["AH53"].alignment = Alignment(horizontal="left")
+        ws["AH53"].font = font_normal
+
+        # 🔹 Guardar archivo generado
         nombre_archivo = f"DC3_{row['Nombre'].replace(' ', '_')}.xlsx"
         ruta_guardado = os.path.join(carpeta_salida, nombre_archivo)
         wb.save(ruta_guardado)
@@ -120,4 +161,5 @@ for index, row in df.iterrows():
         logging.error(f"❌ Error al procesar el registro {index + 1}: {e}")
 
 logging.info("🎉 Proceso finalizado. Todos los formatos han sido generados correctamente.")
+
 
