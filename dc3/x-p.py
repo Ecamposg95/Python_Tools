@@ -2,7 +2,7 @@ import os
 import win32com.client
 
 # Definir rutas
-directorio_trabajo = r"C:\Users\ecamp\Devs\Python_Tools\dc3"
+directorio_trabajo = r"C:\Users\ecamp\Devs\Python_Tools-main\dc3"
 carpeta_entrada = os.path.join(directorio_trabajo, "Formatos_Generados")
 carpeta_salida = os.path.join(directorio_trabajo, "PDF_Generados")
 

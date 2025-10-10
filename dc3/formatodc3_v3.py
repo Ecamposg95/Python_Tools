@@ -8,7 +8,7 @@ import logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Definir rutas
-directorio_trabajo = r"C:\Users\ecamp\Devs\Python_Tools\dc3"
+directorio_trabajo = r"C:\Users\ecamp\Devs\Python_Tools-main\dc3"
 ruta_registros = os.path.join(directorio_trabajo, "DC3_resgistro.xlsx")
 ruta_formato = os.path.join(directorio_trabajo, "DC-3-Formato2.xlsx")
 carpeta_salida = os.path.join(directorio_trabajo, "Formatos_Generados")
@@ -128,8 +128,8 @@ for index, row in df.iterrows():
         escribir_doble_celda(ws, 38, 46, 47, fecha_fin[7])
 
         # Firmas
-        ws["H53"] = row["Instructor"]
-        ws["H53"].font = font_normal
+        ws["F53"] = row["Instructor"]
+        ws["F53"].font = font_normal
         ws["U53"] = row["patron"]
         ws["U53"].font = font_normal
         ws["AH53"] = row["Representante"]
