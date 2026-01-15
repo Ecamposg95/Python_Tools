@@ -8,7 +8,7 @@ import logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Definir rutas
-directorio_trabajo = r"C:\Users\ecamp\Devs\Python_Tools-main\dc3"
+directorio_trabajo = r"D:\Devs\Python_Tools\dc3"
 ruta_registros = os.path.join(directorio_trabajo, "DC3_resgistro.xlsx")
 ruta_formato = os.path.join(directorio_trabajo, "DC-3-Formato2.xlsx")
 carpeta_salida = os.path.join(directorio_trabajo, "Formatos_Generados")
