@@ -1,0 +1,129 @@
+{
+    "paper": {
+        "char_width": 42,
+        "title_centered": true
+    },
+    "header": {
+        "line1": "Comercializadora Rmazh Mesones 144",
+        "line2": "",
+        "separator_char": "-"
+    },
+    "store": {
+        "sucursal": "Comercializadora Rmazh Mesones 144",
+        "direccion": "C. Mesones No. 144 Col. Centro",
+        "telefono": "5543915750",
+        "visita": "rmazh.com"
+    },
+    "sale": {
+        "venta": "253284",
+        "fecha_hora": "2026-01-14 13:35:37",
+        "atendio": "Comercializadora Rmazh Mesones 144"
+    },
+    "columns": {
+        "show_header": true,
+        "desc_label": "DESC.",
+        "right_label": "PRECIO. CANT. IMPORTE"
+    },
+    "items": [
+        {
+            "desc": "PLUMON PARA PIZARRON C/8 1188-8",
+            "price": 45.0,
+            "qty": 40.0
+        },
+        {
+            "desc": "MARCADOR",
+            "price": 15.0,
+            "qty": 100.0
+        },
+        {
+            "desc": "CALCULADORA R-1033",
+            "price": 80.0,
+            "qty": 40.0
+        },
+        {
+            "desc": "CALCULADORA R02 1028",
+            "price": 35.0,
+            "qty": 60.0
+        },
+        {
+            "desc": "COLORES RMAZH C/12 R-1087",
+            "price": 28.0,
+            "qty": 36.0
+        },
+        {
+            "desc": "COLORES RMAZH C/24",
+            "price": 64.0,
+            "qty": 48.0
+        },
+        {
+            "desc": "CALCULADORA R-1034",
+            "price": 50.0,
+            "qty": 40.0
+        },
+        {
+            "desc": "MARCATEXTO 1023",
+            "price": 20.0,
+            "qty": 100.0
+        },
+        {
+            "desc": "MARCATEXTO PASTEL 1022",
+            "price": 20.0,
+            "qty": 100.0
+        },
+        {
+            "desc": "FICHA",
+            "price": 12.0,
+            "qty": 100.0
+        },
+        {
+            "desc": "MONEDA",
+            "price": 12.0,
+            "qty": 100.0
+        },
+        {
+            "desc": "PLUMONES KOOVI PREMIUM",
+            "price": 30.0,
+            "qty": 48.0
+        },
+        {
+            "desc": "DIUREX COLOR",
+            "price": 24.0,
+            "qty": 60.0
+        },
+        {
+            "desc": "BOLIGRAFO NEGRO JOCAR",
+            "price": 14.5,
+            "qty": 48.0
+        },
+        {
+            "desc": "CALCULADORA R-1032",
+            "price": 14.0,
+            "qty": 100.0
+        },
+        {
+            "desc": "CALCULADORA HT-1029",
+            "price": 60.0,
+            "qty": 24.0
+        },
+        {
+            "desc": "FOLLAJE",
+            "price": 20.0,
+            "qty": 300.0
+        }
+    ],
+    "totals": {
+        "total_label": "TOTAL:",
+        "efectivo_label": "EFECTIVO:",
+        "cambio_label": "CAMBIO:",
+        "total_productos_label": "TOTAL DE PRODUCTOS:",
+        "total_override": 33496.0,
+        "efectivo": 33496.0,
+        "cambio": 0.0,
+        "total_productos": 1344
+    },
+    "footer": {
+        "lines": [
+            "*** Gracias por su compra ***"
+        ]
+    }
+}
