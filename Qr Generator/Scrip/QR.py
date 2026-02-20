@@ -12,7 +12,7 @@ from qrcode.image.svg import SvgImage
 output_dir = os.path.join(os.path.dirname(__file__), '..', 'Output')
 
 # Datos que deseas incluir en el código QR
-data = "https://atlaserppos-production.up.railway.app/users"
+data = "https://rmazh.com/shop/"
 
 # Generar el código QR
 qr = qrcode.QRCode(
